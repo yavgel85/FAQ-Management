@@ -52,6 +52,38 @@
                     </ul>
                 </li>
             @endcan
+            @can('faq_management_access')
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link  nav-dropdown-toggle" href="#">
+                        <i class="fa-fw fas fa-question nav-icon">
+
+                        </i>
+                        {{ trans('cruds.faqManagement.title') }}
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        @can('faq_category_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.faq-categories.index") }}" class="nav-link {{ request()->is('admin/faq-categories') || request()->is('admin/faq-categories/*') ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-briefcase nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.faqCategory.title') }}
+                                </a>
+                            </li>
+                        @endcan
+                        @can('faq_question_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.faq-questions.index") }}" class="nav-link {{ request()->is('admin/faq-questions') || request()->is('admin/faq-questions/*') ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-question nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.faqQuestion.title') }}
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')
                     <li class="nav-item">

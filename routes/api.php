@@ -10,4 +10,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Users
     Route::apiResource('users', 'UsersApiController');
 
+    // Faq Categories
+    Route::apiResource('faq-categories', 'FaqCategoryApiController');
+
+    // Faq Questions
+    Route::apiResource('faq-questions', 'FaqQuestionApiController');
+
 });
